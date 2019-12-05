@@ -17,9 +17,10 @@
 #import "YMTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
 
-#define  LL_ScreenWidth   [UIScreen mainScreen].bounds.size.width
-#define  LL_ScreenHeight  [UIScreen mainScreen].bounds.size.height
-#define  LL_iPhoneX (LL_ScreenWidth == 375.f && LL_ScreenHeight == 812.f ? YES : NO)
+#define IS_IPHONE ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? YES : NO)
+#define  LL_ScreenWidth   [UIScreen mainScreen].nativeBounds.size.width
+#define  LL_ScreenHeight  [UIScreen mainScreen].nativeBounds.size.height
+#define  LL_iPhoneX (IS_IPHONE && (LL_ScreenHeight == 1920.f || LL_ScreenHeight == 2208.f || LL_ScreenHeight == 2436.f || LL_ScreenHeight == 2688.f) ? YES : NO)
 
 @interface YMCitySelect ()<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,YMTableViewCellDelegate>
 @property (nonatomic,strong) NSMutableArray *ym_cityNames;
